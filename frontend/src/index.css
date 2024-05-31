@@ -56,6 +56,10 @@ body {
   margin-right: 0.5rem;
 }
 
+.fa-circle-user {
+  padding-right: 0.3rem;
+}
+
 .main-nav-item:hover {
   text-decoration: underline;
 }
@@ -103,7 +107,7 @@ body {
 @media (min-width: 920px) {
   .hero {
     height: 400px;
-    background-position: 0% 33%;
+    object-position: 0% 33%;
   }
 
   .hero-content {
