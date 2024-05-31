@@ -6,6 +6,7 @@ import Footer from "../../components/footer";
 import IconChat from '../../assets/img/icon-chat.png';
 import IconMoney from '../../assets/img/icon-money.png';
 import IconSecurity from '../../assets/img/icon-security.png';
+import "../../../src/index.css";
 export default function Home() {
   return (
     <div>

@@ -1,22 +1,36 @@
 import React from "react";
-import { useState } from "react";
-import { login, logout } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "../../../src/index.css";
 
 export default function Login() {
-    const [newUsername, setNewUsername] = useState("");
-
-    const dispatch = useDispatch();
-    const username = useSelector((state) => state.user.value.username);
-
-    return (
-        <div>
-            {username}
-            <input type="text" onChange={(e) => {
-                setNewUsername(e.target.value)
-            }} />
-            <button onClick={() => dispatch(login({ username: newUsername}))} >Submit</button>
-            <button onClick={() => dispatch(logout())}>Logout</button>
-        </div>
-    )
+  return (
+    <>
+      <Header />
+      <main className="main bg-dark">
+        <section className="sign-in-content">
+        <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+          <h1>Sign In</h1>
+          <form>
+            <div className="input-wrapper">
+              <label for="username">Username</label>
+              <input type="text" id="username" />
+            </div>
+            <div className="input-wrapper">
+              <label for="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+            <div className="input-remember">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+            </div>
+            <button className="sign-in-button">Sign In</button>
+          </form>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
 }

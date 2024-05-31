@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../../assets/img/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../../src/index.css";
 
 export default function Header() {
   return (
