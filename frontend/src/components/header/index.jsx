@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header>
       <nav className="main-nav">
-        <Link className="main-nav-logo" to="./index.html">
+        <Link className="main-nav-logo" to="/">
           <img
             className="main-nav-logo-image"
             src={Logo}
