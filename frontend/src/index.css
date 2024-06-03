@@ -269,7 +269,8 @@ body {
 }
 
 .transaction-button {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
   padding: 8px;
   font-size: 1.1rem;
@@ -278,6 +279,124 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  text-decoration: none;
+}
+
+.dropdown {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.drop-btn {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  color: #fff;
+  background: #00bc77;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.date,
+.details,
+.spend,
+.balance {
+  padding: 0px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.fa-chevron-up {
+  font-size: large;
+  color: #fff;
+  padding: 10px;
+  right: 1rem;
+  position: absolute;
+  transition: transform 0.4s ease-in-out;
+}
+
+.dropdown-content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  background: #00bc77;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin-top: -20px;
+  font-size: 18px;
+  color: #fff;
+  box-sizing: border-box;
+  /* Animation for dropdown content */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.open {
+  max-height: 100%;
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+.dropdown-content p {
+  font-size: 18px;
+  padding: 0;
+}
+
+.dropdown-content select {
+  background: none;
+  border: none;
+  stroke: none;
+  color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+}
+
+.dropdown-content input {
+  background: none;
+  border: none;
+  stroke: none;
+  color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  outline: none;
+}
+
+.dropdown-content option {
+  background-color: #00bc77;
+  cursor: pointer;
+}
+.dropdown-content option:hover {
+  background: #00bc77;
+
+}
+
+
+.active .drop-btn .fa-solid {
+  transform: rotate(-180deg);
 }
 
 @media (min-width: 720px) {
