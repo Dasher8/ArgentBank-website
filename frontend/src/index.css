@@ -283,27 +283,23 @@ body {
 }
 
 .dropdown {
-  width: 90%;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   list-style: none;
-  margin: 20px;
+  margin: 20px 0;
   box-sizing: border-box;
 }
 
 .drop-btn {
-  width: 100%;
   height: 45px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   border-radius: 5px;
   color: #fff;
   background: #00bc77;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   cursor: pointer;
   border: none;
   box-sizing: border-box;
@@ -316,10 +312,11 @@ body {
 .details,
 .spend,
 .balance {
-  padding: 0px;
+  padding: 0 10px;
   font-size: 18px;
   font-weight: 400;
   color: #fff;
+  margin: auto;
 }
 
 .fa-chevron-up {
@@ -327,7 +324,6 @@ body {
   color: #fff;
   padding: 10px;
   right: 1rem;
-  position: absolute;
   transition: transform 0.4s ease-in-out;
 }
 
@@ -389,14 +385,47 @@ body {
   background-color: #00bc77;
   cursor: pointer;
 }
-.dropdown-content option:hover {
-  background: #00bc77;
-
-}
-
 
 .active .drop-btn .fa-solid {
   transform: rotate(-180deg);
+}
+
+.transaction-table {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.transactions-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.transactions-list p {
+  padding: 0;
+  margin: auto;
+}
+
+.selected-option {
+  padding: 0 15px;
+}
+
+.transaction-type,
+.note,
+.custom-select {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dropdown-title {
+  margin: 10px 30px 10px 10px;
 }
 
 @media (min-width: 720px) {

@@ -37,7 +37,14 @@ const handleCategoryChange = (index, newCategory) => {
         <>
         <Header/>
         <Balance title={title} amount={amount} description={description}/>
-        <div>
+        <div className="transaction-table">
+        <div className="transactions-list">
+            <p>Date</p>
+            <p>Description</p>
+            <p>Amount</p>
+            <p>Balance</p>
+            </div>
+         
         {transactions.map((transaction, index) => (
           <Dropdown
             key={index}
@@ -52,7 +59,7 @@ const handleCategoryChange = (index, newCategory) => {
             onNoteChange={(newNote) => handleNoteChange(index, newNote)}
           />
         ))}
-        </div>
+      </div>
         <Footer/>
         </>
     )
