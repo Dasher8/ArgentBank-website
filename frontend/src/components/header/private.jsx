@@ -24,11 +24,11 @@ export default function HeaderPrivate() {
             src={Logo}
             alt="Argent Bank Logo"
           />
-          <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
+        <FontAwesomeIcon icon="fa-solid fa-circle-user" />
           <button className="main-nav-item logout-button" onClick={handleLogout}>
-            <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+          <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
             Sign Out
           </button>
         </div>
