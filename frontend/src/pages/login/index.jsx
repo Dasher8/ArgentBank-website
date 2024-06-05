@@ -1,17 +1,15 @@
 import React from "react";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../../../src/index.css";
+import LayoutDefault from "../../layout/default";
 
 export default function Login() {
   return (
-    <>
-      <Header />
+    <LayoutDefault>
       <main className="main bg-dark">
         <section className="sign-in-content">
-        <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+          <FontAwesomeIcon icon="fa-solid fa-circle-user" />
           <h1>Sign In</h1>
           <form>
             <div className="input-wrapper">
@@ -30,7 +28,6 @@ export default function Login() {
           </form>
         </section>
       </main>
-      <Footer />
-    </>
+    </LayoutDefault>
   );
 }
