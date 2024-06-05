@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { logout } from "../../redux/slices/authenticationSlice";
 import Logo from "../../assets/img/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +9,12 @@ import "../../../src/index.css";
 
 
 export default function HeaderPrivate() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
     return (
         <header>
       <nav className="main-nav">
@@ -18,10 +27,10 @@ export default function HeaderPrivate() {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          <Link className="main-nav-item" to="/login">
+          <button className="main-nav-item logout-button" onClick={handleLogout}>
             <FontAwesomeIcon icon="fa-solid fa-circle-user" />
             Sign Out
-          </Link>
+          </button>
         </div>
       </nav>
     </header>
