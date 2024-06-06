@@ -7,7 +7,7 @@ import LayoutDefault from "../../layout/default";
 import "../../../src/index.css";
 export default function Home() {
   return (
-    <LayoutDefault>
+    <>
       <Banner />
       <main>
         <section className="features">
@@ -39,6 +39,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-    </LayoutDefault>
+    </>
   );
 }

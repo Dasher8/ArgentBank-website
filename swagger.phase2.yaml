@@ -1,0 +1,152 @@
+openapi: 3.0.1
+info:
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase
+  termsOfService: http://swagger.io/terms/
+  version: 1.1.0.Alpha
+servers:
+- url: http://localhost:3001/api/v1
+security:
+  - bearer: []   
+paths:
+ /users/{userId}/accounts:
+    get: 
+      tags:
+        - Transactions module
+      summary: Get all user's account
+      description: Retrieve all the accounts of a given user
+      parameters:
+        - name: userId
+          in: path
+          description: ID of the user (owner of the accounts)
+          required: true
+          schema:
+            type: string
+            format: objectId
+      responses:
+        '200':
+          description: Accounts retrieved successfully for the given user
+          content:
+            application/json: 
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Account"
+        '400':
+          description: Bad request
+          content: {}
+        '404':
+          description: Accounts not found for the given user
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+  /accounts/{accountId}/transactions:
+    get: #TODO
+    post: #TODO
+  /transactions/{transactionsId}:
+    get: #TODO
+    patch:
+      tags:
+        - Transactions module
+      summary: Modify a given transaction
+      description: Edit a transaction category or note
+      parameters:
+        - name: transactionsId
+          in: path
+          description: ID of the transaction
+          required: true
+          schema:
+            type: string
+            format: objectId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  example: Food
+                note:
+                  type: string
+                  example: Lorem Ipsum
+      responses: 
+        '200':
+          description: Transaction successfully updated
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Transaction"
+        '400':
+          description: Bad request
+          content: {}
+        '404':
+          description: Transaction not found
+          content: {}
+        '500':
+          description: Internal Server Error
+          content: {}
+    delete: #TODO
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id: 
+          type: string
+          description: The account's ID (ObjectID)
+          example: "5f92cbf10cf217478ba93561"
+        name: 
+          type: string
+          description: The account's name
+          example: Argent Bank Checking
+        number: 
+          type: string
+          description: The account's number
+          example: x3448
+        balance:
+          type: number
+          description: The account's balance
+          example: 48098.43
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The transaction's ID (ObjectID)
+          example: "5f92cbf10cf217478ba93561"
+        date:
+          type: string
+          description: The transaction's date
+          example: "2020-02-20T00:00:00.0Z"
+        description:
+          type: string
+          description: The transaction's description
+          example: Golden Sun Bakery
+        amount:
+          type: number
+          description: The transaction's amount
+          example: 8.00
+        balance:
+          type: number
+          description: The transaction's balance
+          example: 298.00
+        type:
+          type: string
+          description: The transaction's type
+          example: Electronic
+        category:
+          type: string
+          description: The transaction's category
+          example: Food
+        note:
+          type: string
+          description: The transaction's note
+          example: Lorem Ipsum
+  securitySchemes:
+    bearer:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

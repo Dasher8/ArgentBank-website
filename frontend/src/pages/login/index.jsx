@@ -27,7 +27,6 @@ export default function Login() {
   };
 
   return (
-    <LayoutDefault>
       <main className="main bg-dark">
         <section className="sign-in-content">
           <FontAwesomeIcon icon="fa-solid fa-circle-user" />
@@ -67,6 +66,5 @@ export default function Login() {
           </form>
         </section>
       </main>
-    </LayoutDefault>
   );
 }

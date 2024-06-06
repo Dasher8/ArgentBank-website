@@ -32,7 +32,7 @@ export default function Transactions() {
     setTransactions(updatedTransactions);
   };
   return (
-    <LayoutPrivate>
+    <>
       <Balance title={title} amount={amount} description={description} />
       <div className="transaction-table">
         <div className="transactions-list">
@@ -59,6 +59,6 @@ export default function Transactions() {
           />
         ))}
       </div>
-    </LayoutPrivate>
+    </>
   );
 }

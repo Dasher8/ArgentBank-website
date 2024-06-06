@@ -1,0 +1,9 @@
+GET /ressources (Récupérer toutes les ressources) Ressource[]
+GET /ressources/{ressourceId} (Récupérer une ressource en particulier) Ressource
+GET /ressources/{ressourceId}/ressourcesEnfants (Récupérer toutes les ressources enfant d'une ressource en particulier)
+
+Exemple : users/1/posts
+
+POST /ressources (Créer une ressource)
+PUT /ressources/{ressourceId} (Modifier une ressource)
+DELETE /ressources/{ressourceId} (Supprimer une ressource)

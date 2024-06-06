@@ -18,6 +18,8 @@ export default function HeaderPrivate() {
     dispatch(logout());
     navigate('/');
   };
+
+  
     return (
         <header>
       <nav className="main-nav">

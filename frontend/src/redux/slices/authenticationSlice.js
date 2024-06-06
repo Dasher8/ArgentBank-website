@@ -25,10 +25,7 @@ export const loginUser = createAsyncThunk(
         sessionStorage.setItem('authToken', data.body.token);
       }
 
-      // Fetch user data after successful login
-      await dispatch(fetchUser(data.body.token));
-
-      return { token: data.body.token, rememberMe };
+      return data.body.token;
     } catch (error) {
       return rejectWithValue('Erreur dans l’identifiant ou le mot de passe');
     }
@@ -38,17 +35,13 @@ export const loginUser = createAsyncThunk(
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
-    token: null,
-    rememberMe: false,
+    token: localStorage.getItem("authToken") || sessionStorage.getItem("authToken"),
     error: null,
     loading: false,
   },
   reducers: {
     logout: (state) => {
-      state.user = null;
       state.token = null;
-      state.rememberMe = false;
       localStorage.removeItem('authToken');
       sessionStorage.removeItem('authToken');
     },
@@ -61,8 +54,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.token = action.payload.token;
-        state.rememberMe = action.payload.rememberMe;
+        state.token = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
