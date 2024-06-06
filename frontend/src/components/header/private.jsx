@@ -10,13 +10,13 @@ import "../../../src/index.css";
 
 export default function HeaderPrivate() {
 
-  const { firstName } = useSelector((state) => state.user);
+  const { userName } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate('/');
   };
     return (
         <header>
@@ -29,8 +29,10 @@ export default function HeaderPrivate() {
           />
         </Link>
         <div>
+          <Link className="main-nav-item" to="/profile">
            <FontAwesomeIcon icon="fa-solid fa-circle-user" />
-           <span>{firstName}</span>
+           <span>{userName}</span>
+           </Link>
           <button className="main-nav-item logout-button" onClick={handleLogout}>
           <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
             Sign Out
