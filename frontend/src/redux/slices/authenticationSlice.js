@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchUser } from './userSlice';
 
 export const loginUser = createAsyncThunk(
   'authenticationSlice/loginUser',
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password }, { dispatch, rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -17,6 +18,10 @@ export const loginUser = createAsyncThunk(
       }
       const data = await response.json();
       localStorage.setItem('authToken', data.body.token);
+
+      // Fetch user data after successful login
+      await dispatch(fetchUser(data.body.token));
+
       return data.body;
     } catch (error) {
       return rejectWithValue('Erreur dans l’identifiant ou le mot de passe');
@@ -47,7 +52,6 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
         state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, (state, action) => {

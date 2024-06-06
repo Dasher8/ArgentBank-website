@@ -1,10 +1,16 @@
-import React from "react";
-import Balance from "../../components/balance";
-import LayoutPrivate from "../../layout/private";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Balance from '../../components/balance';
+import LayoutPrivate from '../../layout/private';
+
 export default function Profile() {
+
+  const { firstName, lastName } = useSelector((state) => state.user);
+
   const title = "Argent Bank Checking (x8349)";
   const amount = "$2,082.79";
   const description = "Available Balance";
+
   return (
     <LayoutPrivate>
       <main className="main bg-dark">
@@ -12,7 +18,7 @@ export default function Profile() {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {firstName} {lastName}!
           </h1>
           <button className="edit-button">Edit Name</button>
         </div>
