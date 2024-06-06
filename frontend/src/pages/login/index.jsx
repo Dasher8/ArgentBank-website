@@ -10,6 +10,7 @@ import LayoutDefault from "../../layout/default";
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error, token } = useSelector((state) => state.auth);
@@ -22,7 +23,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(loginUser({ email: username, password }));
+    dispatch(loginUser({ email: username, password, rememberMe }));
   };
 
   return (
@@ -51,7 +52,12 @@ export default function Login() {
               />
             </div>
             <div className="input-remember">
-              <input type="checkbox" id="remember-me" />
+              <input
+                type="checkbox"
+                id="remember-me"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
               <label htmlFor="remember-me">Remember me</label>
             </div>
             {error && <div className="login-error-message">{error}</div>}

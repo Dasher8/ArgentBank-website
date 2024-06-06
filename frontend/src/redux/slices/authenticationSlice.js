@@ -3,7 +3,7 @@ import { fetchUser } from './userSlice';
 
 export const loginUser = createAsyncThunk(
   'authenticationSlice/loginUser',
-  async ({ email, password }, { dispatch, rejectWithValue }) => {
+  async ({ email, password, rememberMe }, { dispatch, rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -17,12 +17,18 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(error.message || 'Login failed');
       }
       const data = await response.json();
-      localStorage.setItem('authToken', data.body.token);
+      
+      // Store token based on rememberMe value
+      if (rememberMe) {
+        localStorage.setItem('authToken', data.body.token);
+      } else {
+        sessionStorage.setItem('authToken', data.body.token);
+      }
 
       // Fetch user data after successful login
       await dispatch(fetchUser(data.body.token));
 
-      return data.body;
+      return { token: data.body.token, rememberMe };
     } catch (error) {
       return rejectWithValue('Erreur dans l’identifiant ou le mot de passe');
     }
@@ -34,6 +40,7 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     token: null,
+    rememberMe: false,
     error: null,
     loading: false,
   },
@@ -41,7 +48,9 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
+      state.rememberMe = false;
       localStorage.removeItem('authToken');
+      sessionStorage.removeItem('authToken');
     },
   },
   extraReducers: (builder) => {
@@ -53,6 +62,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.token = action.payload.token;
+        state.rememberMe = action.payload.rememberMe;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

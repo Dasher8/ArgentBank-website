@@ -20,7 +20,7 @@ export default function Profile() {
             <br />
             {firstName} {lastName}!
           </h1>
-          <button className="edit-button">Edit Name</button>
+          <button className="edit-button">Edit User Name</button>
         </div>
         <h2 className="sr-only">Accounts</h2>
         <Balance title={title} amount={amount} description={description} />
