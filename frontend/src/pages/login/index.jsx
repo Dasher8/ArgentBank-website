@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from "../../redux/slices/authenticationSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from 'react-router-dom';
-
 import "../../../src/index.css";
-import LayoutDefault from "../../layout/default";
 
 export default function Login() {
   const [username, setUsername] = useState('');
