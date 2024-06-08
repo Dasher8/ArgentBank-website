@@ -43,7 +43,7 @@ export default function Profile() {
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>
+        <h1 className="welcome-title">
           Welcome back
           <br />
           {firstName} {lastName}!
@@ -70,7 +70,6 @@ export default function Profile() {
         )}
         {error && <p className="error-message">{error}</p>}
       </div>
-      <h2 className="sr-only">Accounts</h2>
       <Balance title={title} amount={amount} description={description} />
       <Balance title={title} amount={amount} description={description} />
       <Balance title={title} amount={amount} description={description} />

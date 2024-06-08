@@ -3,7 +3,6 @@ import Banner from "../../components/banner";
 import IconChat from "../../assets/img/icon-chat.png";
 import IconMoney from "../../assets/img/icon-money.png";
 import IconSecurity from "../../assets/img/icon-security.png";
-import LayoutDefault from "../../layout/default";
 import "../../../src/index.css";
 export default function Home() {
   return (

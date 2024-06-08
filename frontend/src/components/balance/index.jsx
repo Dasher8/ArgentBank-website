@@ -10,9 +10,9 @@ export default function Balance( {title, amount, description} ){
           <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-        <Link to="/transactions" className="transaction-button">
+        <p to="/transactions" className="transaction-button">
           View transactions
-        </Link>
+        </p>
         </div>
       </section>
     )
