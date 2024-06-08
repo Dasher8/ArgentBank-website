@@ -46,6 +46,18 @@ section {
   display: none;
 }
 
+.main-nav-item .logout-button {
+  margin: 0;
+}
+
+.user {
+  display: inline;
+}
+
+.fa-right-from-bracket {
+  font-size: small;
+}
+
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -64,7 +76,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 20px;
+  padding: 5px 5px;
 }
 
 .main-nav a {
@@ -78,12 +90,13 @@ section {
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
-  font-size: 18px;
+  margin-right: 0.2rem;
+  font-size: 15px;
 }
 
 .fa-circle-user {
-  padding-right: 0.3rem;
+  padding-right: 0.2rem;
+  font-size: small;
 }
 
 .main-nav-item:hover {
@@ -97,7 +110,7 @@ section {
 }
 
 .main-nav-logo-image {
-  max-width: 100%;
+  max-width: 70%;
   width: 200px;
 }
 
@@ -133,6 +146,11 @@ section {
 }
 
 @media (min-width: 920px) {
+
+.main-nav-item {
+  font-size: 18px;
+}
+
   .hero {
     height: 400px;
     object-position: 0% 33%;
@@ -475,6 +493,11 @@ section {
 }
 
 @media (min-width: 720px) {
+
+  .main-nav-item {
+    font-size: 18px;
+  }
+
   .account {
     flex-direction: row;
   }

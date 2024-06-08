@@ -37,7 +37,7 @@ export default function Header() {
           />
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
-        <div>
+        <div className="user">
           {token && userName ? (
             <>
               <Link className="main-nav-item" to="/profile">
