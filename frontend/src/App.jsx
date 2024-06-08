@@ -6,7 +6,6 @@ import store from "./redux/store";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
-import Transactions from "./pages/transactions/transaction";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import "./index.css";
@@ -21,7 +20,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/transactions" element={<Transactions />} />
         </Routes>
         <Footer />
       </BrowserRouter>

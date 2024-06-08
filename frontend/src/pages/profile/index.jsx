@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../../redux/slices/userSlice";
 import Balance from "../../components/balance";
-import LayoutPrivate from "../../layout/private";
 
 export default function Profile() {
   const dispatch = useDispatch();
