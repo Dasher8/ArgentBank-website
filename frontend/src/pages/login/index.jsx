@@ -27,9 +27,9 @@ export default function Login() {
   };
 
   return (
-      <main className="main bg-dark">
+      <main className="main bg-dark-login">
         <section className="sign-in-content">
-          <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+          <FontAwesomeIcon icon="fa-solid fa-circle-user" id='form-icon' />
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">

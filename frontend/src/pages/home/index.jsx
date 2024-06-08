@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <main>
+      <main className="home">
         <section className="features">
           <h2 className="sr-only">Features</h2>
           <div className="feature-item">
