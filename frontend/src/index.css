@@ -13,12 +13,37 @@ body {
   min-height: 100vh;
 }
 
+section {
+  display: flex;
+}
+.account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .main {
   flex: 1;
+  height: calc(100vh - 50px);
+  box-sizing: border-box;
 }
 
 .bg-dark {
   background-color: #12002b;
+  padding-bottom: 30px;
+}
+
+.welcome-title {
+  margin: 0;
+  padding-top: 30px;
+}
+
+.account-content-wrapper.cta {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.logout-button-text {
+  display: none;
 }
 
 .sr-only {
@@ -93,6 +118,7 @@ body {
   padding: 2rem;
   text-align: left;
   margin: 0 auto;
+  display: block;
 }
 
 .hero-content .subtitle {
@@ -448,7 +474,6 @@ body {
   padding-right: 5px;
 }
 
-
 @media (min-width: 720px) {
   .account {
     flex-direction: row;
@@ -460,5 +485,18 @@ body {
 
   .transaction-button {
     width: 200px;
+  }
+
+  .main {
+    height: calc(100vh - 65px - 85px);
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  section {
+    display: block;
+  }
+  .logout-button-text {
+    display: inline;
   }
 }

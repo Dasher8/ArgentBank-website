@@ -49,13 +49,13 @@ export default function Header() {
                 onClick={handleLogout}
               >
                 <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
-                Sign Out
+                <span className="logout-button-text">Sign Out</span>
               </button>
             </>
           ) : (
             <Link className="main-nav-item" to="/login">
               <FontAwesomeIcon icon="fa-solid fa-circle-user" />
-              Sign In
+              <span>Sign In</span>
             </Link>
           )}
         </div>
