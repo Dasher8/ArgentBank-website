@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Profile from "./pages/profile";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import PrivateRoute from "./components/route/private";
 import "./index.css";
 import "./fontAwesome";
 
@@ -19,7 +20,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route element={<PrivateRoute />}> {/* Protecting the /profile route */}
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
