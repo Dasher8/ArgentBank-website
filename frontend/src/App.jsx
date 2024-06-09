@@ -9,6 +9,7 @@ import Profile from "./pages/profile";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import PrivateRoute from "./components/route/private";
+import Error from "./pages/error";
 import "./index.css";
 import "./fontAwesome";
 
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route element={<PrivateRoute />}> {/* Protecting the /profile route */}
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="*" element={<Error/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
