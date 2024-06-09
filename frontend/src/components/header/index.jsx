@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Logo from "../../assets/img/argentBankLogo.png";
+import Logo1 from "../../assets/img/argentBankLogo.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -33,6 +34,7 @@ export default function Header() {
           <img
             className="main-nav-logo-image"
             src={Logo}
+            srcSet={Logo1}
             alt="Argent Bank Logo"
           />
           <h1 className="sr-only">Argent Bank</h1>
