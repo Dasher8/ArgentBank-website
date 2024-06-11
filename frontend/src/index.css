@@ -417,6 +417,7 @@ button {
 
   .features {
     flex-direction: row;
+    padding-top: 60px;
   }
 
   .fa-circle-user {
