@@ -294,6 +294,17 @@ section {
   cursor: pointer;
 }
 
+.buttons-container {
+  padding: 10px;
+}
+
+.save {
+  margin-right: 10px;
+}
+button {
+  cursor: pointer;
+}
+
 .header {
   color: #fff;
   margin-bottom: 2rem;

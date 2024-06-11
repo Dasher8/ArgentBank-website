@@ -70,10 +70,12 @@ export default function Profile() {
               value={newUserName}
               onChange={(e) => setNewUserName(e.target.value)}
             />
-            <button type="submit">Save</button>
-            <button type="button" onClick={handleCancel}>
+            <div className="buttons-container">
+            <button type="submit" className="save">Save</button>
+            <button type="button" className="cancel" onClick={handleCancel}>
               Cancel
             </button>
+            </div>
           </form>
         ) : (
           <>
