@@ -36,9 +36,23 @@ export default function Profile() {
     setNewUserName(userName);
   };
 
-  const title = "Argent Bank Checking (x8349)";
-  const amount = "$2,082.79";
-  const description = "Available Balance";
+  const balances = [
+    {
+      title: "Argent Bank Checking (x8349)",
+      amount: "$2,082.79",
+      description: "Available Balance",
+    },
+    {
+      title: "Argent Bank Savings (x6712)",
+      amount: "$10,928.42",
+      description: "Available Balance",
+    },
+    {
+      title: "Argent Bank Credit Card (x8349)",
+      amount: "$184.30",
+      description: "Current Balance",
+    },
+  ];
 
   return (
     <main className="main bg-dark">
@@ -71,9 +85,14 @@ export default function Profile() {
         {error && <p className="error-message">{error}</p>}
       </div>
       <div className="balance-container">
-      <Balance title={title} amount={amount} description={description} />
-      <Balance title={title} amount={amount} description={description} />
-      <Balance title={title} amount={amount} description={description} />
+      {balances.map((balance, index) => (
+          <Balance
+            key={index}
+            title={balance.title}
+            amount={balance.amount}
+            description={balance.description}
+          />
+        ))}
       </div>
     </main>
   );
