@@ -74,11 +74,11 @@ paths:
           description: Internal Server Error
           content: {}
   /accounts/{accountId}/transactions/{id}:
-    get:
+     get:
       tags:
         - Transactions module
       summary: Get all information about one transaction
-      description: Retrieve all information (transaction + transaction options) about one transaction
+      description: Retrieve all information about one transaction
       parameters:
         - name: accountId
           in: path
@@ -100,7 +100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionDetail"
+                $ref: "#/components/schemas/Transaction"
         '400':
           description: Bad request
           content: {}
@@ -110,26 +110,40 @@ paths:
         '500':
           description: Internal Server Error
           content: {}
-  /transactionsOptions:
-    post:
+     put:
       tags:
         - Transactions module
-      summary: Create new additional information about one transaction
-      description: Add new additional information to an existing transaction
+      summary: Update all fields of a transaction
+      description: Update all fields of a transaction
+      parameters:
+        - name: accountId
+          in: path
+          description: ID of the account
+          required: true
+          schema:
+            type: string
+            format: objectId
+        - name: id
+          in: path
+          description: ID of the transaction
+          required: true
+          schema:
+            type: string
+            format: objectId
       requestBody:
-        description: Transaction option object that needs to be added
+        description: Transaction object that needs to be updated
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionOption"
+              $ref: "#/components/schemas/Transaction"
       responses:
-        '201':
-          description: Transaction option added successfully
+        '200':
+          description: Transaction updated successfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionOption"
+                $ref: "#/components/schemas/Transaction"
         '400':
           description: Bad request
           content: {}
@@ -139,135 +153,92 @@ paths:
         '500':
           description: Internal Server Error
           content: {}
-  /transactionsOptions/{id}:
-    get:
+     patch:
       tags:
         - Transactions module
-      summary: Get one transaction option information
-      description: Retrieve one transaction option information by ID
+      summary: Update some fields of a transaction
+      description: Update the 'category' and/or 'note' fields of a transaction
       parameters:
-        - name: id
+        - name: accountId
           in: path
-          description: ID of the transaction option
+          description: ID of the account
           required: true
           schema:
             type: string
             format: objectId
-      responses:
-        '200':
-          description: Transaction option information retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionOption"
-        '400':
-          description: Bad request
-          content: {}
-        '404':
-          description: Transaction option not found
-          content: {}
-        '500':
-          description: Internal Server Error
-          content: {}
-    put:
-      tags:
-        - Transactions module
-      summary: Update all fields about one transaction option
-      description: Update all fields about one transaction option information
-      parameters:
         - name: id
           in: path
-          description: ID of the transaction option
+          description: ID of the transaction
           required: true
           schema:
             type: string
             format: objectId
       requestBody:
-        description: Transaction option object that needs to be updated
+        description: Partial transaction object that needs to be updated
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/TransactionOption"
+              type: object
+              properties:
+                category:
+                  type: string
+                  description: The transaction's category
+                note:
+                  type: string
+                  description: A note for the transaction
+              example:
+                category: Food
+                note: "Lorem Ipsum"
       responses:
         '200':
-          description: Transaction option updated successfully
+          description: Transaction partially updated successfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionOption"
+                $ref: "#/components/schemas/Transaction"
         '400':
           description: Bad request
           content: {}
         '404':
-          description: Transaction option not found
+          description: Transaction not found
           content: {}
         '500':
           description: Internal Server Error
           content: {}
-    patch:
+     delete:
       tags:
         - Transactions module
-      summary: Update some fields about one transaction option
-      description: Update some fields about one transaction option information
+      summary: Delete a specific transaction
+      description: Remove a specific transaction by ID
       parameters:
-        - name: id
+        - name: accountId
           in: path
-          description: ID of the transaction option
+          description: ID of the account
           required: true
           schema:
             type: string
             format: objectId
-      requestBody:
-        description: Partial transaction option object that needs to be updated
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TransactionOptionPartial"
-      responses:
-        '200':
-          description: Transaction option partially updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionOption"
-        '400':
-          description: Bad request
-          content: {}
-        '404':
-          description: Transaction option not found
-          content: {}
-        '500':
-          description: Internal Server Error
-          content: {}
-    delete:
-      tags:
-        - Transactions module
-      summary: Delete a specific transaction option
-      description: Remove a specific transaction option by ID
-      parameters:
         - name: id
           in: path
-          description: ID of the transaction option
+          description: ID of the transaction
           required: true
           schema:
             type: string
             format: objectId
       responses:
         '200':
-          description: Transaction option deleted successfully
+          description: Transaction deleted successfully
           content: {}
         '400':
           description: Bad request
           content: {}
         '404':
-          description: Transaction option not found
+          description: Transaction not found
           content: {}
         '500':
           description: Internal Server Error
           content: {}
-
 components:
   schemas:
     Account:
@@ -316,26 +287,6 @@ components:
           type: string
           description: The transaction's type
           example: Electronic
-    TransactionDetail:
-      type: object
-      properties:
-        transaction:
-          $ref: "#/components/schemas/Transaction"
-        options:
-          type: array
-          items:
-            $ref: "#/components/schemas/TransactionOption"
-    TransactionOption:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The transaction option's ID (ObjectID)
-          example: "5f92cbf10cf217478ba93561"
-        transactionId:
-          type: string
-          description: The ID of the associated transaction (ObjectID)
-          example: "5f92cbf10cf217478ba93561"
         category:
           type: string
           description: The transaction's category
@@ -343,18 +294,7 @@ components:
         note:
           type: string
           description: The transaction's note
-          example: Lorem Ipsum
-    TransactionOptionPartial:
-      type: object
-      properties:
-        category:
-          type: string
-          description: The transaction's category
-          example: Food
-        note:
-          type: string
-          description: The transaction's note
-          example: Lorem Ipsum
+          example: "Lorem Ipsum"
   securitySchemes:
     bearer:
       type: http
