@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Balance( {title, amount, description} ){
     return (
@@ -10,7 +9,7 @@ export default function Balance( {title, amount, description} ){
           <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-        <p to="/transactions" className="transaction-button">
+        <p className="transaction-button">
           View transactions
         </p>
         </div>

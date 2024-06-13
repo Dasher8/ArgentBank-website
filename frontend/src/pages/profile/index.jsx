@@ -8,7 +8,7 @@ export default function Profile() {
   const { firstName, lastName, userName, error } = useSelector(
     (state) => state.user
   );
-  const token = useSelector((state) => state.auth.token); // Assuming you store the token in the auth state
+  const token = useSelector((state) => state.auth.token);
 
   const [isEditing, setIsEditing] = useState(false);
   const [newUserName, setNewUserName] = useState("");

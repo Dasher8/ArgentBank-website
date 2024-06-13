@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from "../../redux/slices/authenticationSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from 'react-router-dom';
-import "../../../src/index.css";
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -15,7 +14,7 @@ export default function Login() {
 
   useEffect(() => {
     if (token) {
-      navigate('/profile'); // Redirect to profile page on successful login
+      navigate('/profile');
     }
   }, [token, navigate]);
 

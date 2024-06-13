@@ -6,39 +6,50 @@ import IconSecurity from "../../assets/img/icon-security.png";
 import IconChat1 from "../../assets/img/icon-chat.webp";
 import IconMoney1 from "../../assets/img/icon-money.webp";
 import IconSecurity1 from "../../assets/img/icon-security.webp";
-import "../../../src/index.css";
+import Feature from "../../components/features";
 export default function Home() {
+  const features = [
+    {
+      iconSrc: IconChat,
+      iconSrcSet: IconChat1,
+      altText: "Chat Icon",
+      title: "You are our #1 priority",
+      description:
+        "Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.",
+    },
+    {
+      iconSrc: IconMoney,
+      iconSrcSet: IconMoney1,
+      altText: "Chat Icon",
+      title: "More savings means higher rates",
+      description:
+        "The more you save with us, the higher your interest rate will be!",
+    },
+    {
+      iconSrc: IconSecurity,
+      iconSrcSet: IconSecurity1,
+      altText: "Chat Icon",
+      title: "Security you can trust",
+      description:
+        "We use top of the line encryption to make sure your data and money is always safe.",
+    },
+  ];
+
   return (
     <>
       <Banner />
       <main className="home">
         <section className="features">
-          <h2 className="sr-only">Features</h2>
-          <div className="feature-item">
-            <img src={IconChat} srcSet={IconChat1} alt="Chat Icon" className="feature-icon" />
-            <h3 className="feature-item-title">You are our #1 priority</h3>
-            <p>
-              Need to talk to a representative? You can get in touch through our
-              24/7 chat or through a phone call in less than 5 minutes.
-            </p>
-          </div>
-          <div className="feature-item">
-            <img src={IconMoney} srcSet={IconMoney1} alt="Chat Icon" className="feature-icon" />
-            <h3 className="feature-item-title">
-              More savings means higher rates
-            </h3>
-            <p>
-              The more you save with us, the higher your interest rate will be!
-            </p>
-          </div>
-          <div className="feature-item">
-            <img src={IconSecurity} srcSet={IconSecurity1} alt="Chat Icon" className="feature-icon" />
-            <h3 className="feature-item-title">Security you can trust</h3>
-            <p>
-              We use top of the line encryption to make sure your data and money
-              is always safe.
-            </p>
-          </div>
+          {features.map((feature, index) => (
+            <Feature
+              key={index}
+              iconSrc={feature.iconSrc}
+              iconSrcSet={feature.iconSrcSet}
+              altText={feature.altText}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
         </section>
       </main>
     </>

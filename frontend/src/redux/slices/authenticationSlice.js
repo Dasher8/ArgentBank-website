@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchUser } from './userSlice';
 
 export const loginUser = createAsyncThunk(
   'authenticationSlice/loginUser',
-  async ({ email, password, rememberMe }, { dispatch, rejectWithValue }) => {
+  async ({ email, password, rememberMe }, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
